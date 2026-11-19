@@ -1,0 +1,129 @@
+{
+  "accelerator_and_plasma_synthesis": {
+    "atoms_per_g_he3": 1.9967116234580347e+23,
+    "liters_stp_per_g_he3": 7.4316,
+    "market_price_usd_per_L_stp": 2500.0,
+    "market_price_usd_per_g": 18579.04,
+    "scenarios": [
+      {
+        "key": "cold_target_200keV",
+        "name": "Cold solid-target D-D (200 keV, Y=1e-5)",
+        "energy_keV": 200.0,
+        "yield_he3_per_ion": 1e-05,
+        "kwh_per_g": 355453856.4,
+        "elec_cost_usd_per_g": 17772692.82,
+        "beam_current_A_for_1g_yr": 101.373,
+        "beam_power_MW_for_1g_yr": 20.275,
+        "market_cost_ratio": 956.6
+      },
+      {
+        "key": "optimistic_target_300keV",
+        "name": "Optimistic beam-target D-D (300 keV, Y=5e-5)",
+        "energy_keV": 300.0,
+        "yield_he3_per_ion": 5e-05,
+        "kwh_per_g": 106636156.9,
+        "elec_cost_usd_per_g": 5331807.85,
+        "beam_current_A_for_1g_yr": 20.275,
+        "beam_power_MW_for_1g_yr": 6.082,
+        "market_cost_ratio": 286.98
+      },
+      {
+        "key": "recirculating_plasma_dd",
+        "name": "Recirculating hot-plasma D-D (50 keV, Y_eff=0.05)",
+        "energy_keV": 50.0,
+        "yield_he3_per_ion": 0.05,
+        "kwh_per_g": 17772.7,
+        "elec_cost_usd_per_g": 888.63,
+        "beam_current_A_for_1g_yr": 0.02,
+        "beam_power_MW_for_1g_yr": 0.001,
+        "market_cost_ratio": 0.05
+      }
+    ]
+  },
+  "reactor_tritium_decay": {
+    "reactor_thermal_gw": 3.0,
+    "excess_n_per_fission": 0.1,
+    "tritium_g_per_yr": 1479.7,
+    "decay_fraction_yr1": 0.05471,
+    "he3_yr1_g": 81.0,
+    "he3_yr1_L_stp": 601.6,
+    "he3_steady_state_g_per_yr": 1479.7
+  },
+  "hybrid_cryo_cascade": {
+    "plant_lhe_L_per_day": 1000.0,
+    "gas_throughput_L_stp_per_yr": 276494250.0,
+    "mass_flow_g_per_s": 1.4468,
+    "pre_concentration_factor": 20.0,
+    "direct_1_8K_cold_W": 78.71,
+    "direct_1_8K_elec_kW": 181.11,
+    "direct_1_8K_kwh_per_yr": 1587633.9,
+    "hybrid_stage1_25K_elec_kW": 2.25,
+    "hybrid_stage2_1_8K_cold_W": 3.34,
+    "hybrid_stage2_1_8K_elec_kW": 7.68,
+    "hybrid_total_elec_kW": 9.92,
+    "hybrid_kwh_per_yr": 86980.3,
+    "power_reduction_factor": 18.25,
+    "feedstocks": [
+      {
+        "key": "crustal",
+        "name": "Crustal natural-gas He (1.5e-7)",
+        "x_he3": 1.5e-07,
+        "he3_L_stp_per_yr": 41.47,
+        "he3_g_per_yr": 5.58,
+        "annual_market_value_usd": 103685.34,
+        "gibbs_min_exergy_kwh_per_g": 0.00384,
+        "direct_1_8K_kwh_per_g": 284482.9,
+        "direct_1_8K_usd_per_g": 14224.15,
+        "hybrid_kwh_per_g": 15585.7,
+        "hybrid_usd_per_g": 779.29,
+        "margin_over_elec_ratio": 23.8
+      },
+      {
+        "key": "atmospheric",
+        "name": "Atmospheric He (1.38e-6)",
+        "x_he3": 1.38e-06,
+        "he3_L_stp_per_yr": 381.56,
+        "he3_g_per_yr": 51.34,
+        "annual_market_value_usd": 953905.16,
+        "gibbs_min_exergy_kwh_per_g": 0.00333,
+        "direct_1_8K_kwh_per_g": 30922.1,
+        "direct_1_8K_usd_per_g": 1546.1,
+        "hybrid_kwh_per_g": 1694.1,
+        "hybrid_usd_per_g": 84.71,
+        "margin_over_elec_ratio": 219.3
+      },
+      {
+        "key": "mantle",
+        "name": "Mantle/geothermal-enriched He (1.0e-5)",
+        "x_he3": 1e-05,
+        "he3_L_stp_per_yr": 2764.94,
+        "he3_g_per_yr": 372.05,
+        "annual_market_value_usd": 6912356.25,
+        "gibbs_min_exergy_kwh_per_g": 0.00287,
+        "direct_1_8K_kwh_per_g": 4267.2,
+        "direct_1_8K_usd_per_g": 213.36,
+        "hybrid_kwh_per_g": 233.8,
+        "hybrid_usd_per_g": 11.69,
+        "margin_over_elec_ratio": 1589.4
+      }
+    ]
+  },
+  "quantum_cryo_supply": {
+    "dilution_fridge_charge_L_stp": 20.0,
+    "dilution_fridge_charge_g": 2.691,
+    "skid_coverage_by_feedstock": {
+      "crustal": {
+        "dilution_fridges_per_yr": 2.07,
+        "inventory_cost_usd_per_fridge": 50000.0
+      },
+      "atmospheric": {
+        "dilution_fridges_per_yr": 19.08,
+        "inventory_cost_usd_per_fridge": 50000.0
+      },
+      "mantle": {
+        "dilution_fridges_per_yr": 138.25,
+        "inventory_cost_usd_per_fridge": 50000.0
+      }
+    }
+  }
+}
