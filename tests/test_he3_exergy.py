@@ -28,18 +28,20 @@ def test_coulomb_stopping_wall_for_cold_targets() -> None:
 
 
 def test_reactor_tritium_decay_budget() -> None:
-    """Verify excess-neutron tritium production and Year-1 3He accumulation."""
+    """Verify excess-neutron tritium production and batch vs. zero-stock Year-1 3He yield."""
     rx = audit_reactor_tritium_decay()
     assert 1400.0 < rx["tritium_g_per_yr"] < 1550.0
     assert math.isclose(rx["decay_fraction_yr1"], 0.05471, abs_tol=1e-4)
     assert 78.0 < rx["he3_yr1_g"] < 85.0
+    assert 40.0 < rx["he3_yr1_continuous_from_zero_g"] < 42.0
 
 
 def test_hybrid_cryo_cascade_reduction_and_yield() -> None:
-    """Verify >18x cryogenic power savings and sub-$15/g electricity on mantle He."""
+    """Verify >18x cryogenic power savings and sub-$15/g electricity on mantle He (100% & 85% recovery)."""
     cas = audit_hybrid_cryo_cascade()
     assert cas["power_reduction_factor"] > 18.0
     assert cas["hybrid_total_elec_kW"] < 12.0
+    assert math.isclose(cas["implied_stage1_recovery_ideal"], 1.0, abs_tol=1e-6)
 
     crustal, _, mantle = cas["feedstocks"]
     assert math.isclose(crustal["he3_g_per_yr"], 5.58, abs_tol=0.05)
@@ -47,6 +49,7 @@ def test_hybrid_cryo_cascade_reduction_and_yield() -> None:
     assert math.isclose(mantle["he3_g_per_yr"], 372.05, abs_tol=0.1)
     assert mantle["hybrid_kwh_per_g"] < 250.0
     assert mantle["hybrid_usd_per_g"] < 15.0
+    assert mantle["recovery_85pct_hybrid_usd_per_g"] < 16.0
 
 
 def test_quantum_dilution_fridge_coverage() -> None:

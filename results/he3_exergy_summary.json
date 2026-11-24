@@ -46,6 +46,8 @@
     "tritium_g_per_yr": 1479.7,
     "decay_fraction_yr1": 0.05471,
     "he3_yr1_g": 81.0,
+    "he3_yr1_from_batch_g": 81.0,
+    "he3_yr1_continuous_from_zero_g": 40.86,
     "he3_yr1_L_stp": 601.6,
     "he3_steady_state_g_per_yr": 1479.7
   },
@@ -53,7 +55,10 @@
     "plant_lhe_L_per_day": 1000.0,
     "gas_throughput_L_stp_per_yr": 276494250.0,
     "mass_flow_g_per_s": 1.4468,
+    "stage_cut_theta": 0.05,
     "pre_concentration_factor": 20.0,
+    "implied_stage1_recovery_ideal": 1.0,
+    "realistic_recovery_benchmark": 0.85,
     "direct_1_8K_cold_W": 78.71,
     "direct_1_8K_elec_kW": 181.11,
     "direct_1_8K_kwh_per_yr": 1587633.9,
@@ -76,6 +81,9 @@
         "direct_1_8K_usd_per_g": 14224.15,
         "hybrid_kwh_per_g": 15585.7,
         "hybrid_usd_per_g": 779.29,
+        "recovery_85pct_he3_g_per_yr": 4.74,
+        "recovery_85pct_hybrid_kwh_per_g": 18336.1,
+        "recovery_85pct_hybrid_usd_per_g": 916.81,
         "margin_over_elec_ratio": 23.8
       },
       {
@@ -90,6 +98,9 @@
         "direct_1_8K_usd_per_g": 1546.1,
         "hybrid_kwh_per_g": 1694.1,
         "hybrid_usd_per_g": 84.71,
+        "recovery_85pct_he3_g_per_yr": 43.64,
+        "recovery_85pct_hybrid_kwh_per_g": 1993.1,
+        "recovery_85pct_hybrid_usd_per_g": 99.65,
         "margin_over_elec_ratio": 219.3
       },
       {
@@ -104,6 +115,9 @@
         "direct_1_8K_usd_per_g": 213.36,
         "hybrid_kwh_per_g": 233.8,
         "hybrid_usd_per_g": 11.69,
+        "recovery_85pct_he3_g_per_yr": 316.24,
+        "recovery_85pct_hybrid_kwh_per_g": 275.0,
+        "recovery_85pct_hybrid_usd_per_g": 13.75,
         "margin_over_elec_ratio": 1589.4
       }
     ]

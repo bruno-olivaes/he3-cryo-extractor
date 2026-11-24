@@ -127,9 +127,17 @@ def audit_reactor_tritium_decay() -> dict[str, Any]:
     n_excess_per_s = excess_n_per_fission * fissions_per_s
     tritium_g_per_yr = (n_excess_per_s * SEC_PER_YEAR / AVOGADRO) * M_TRITIUM_G_MOL
 
-    decay_frac_yr1 = 1.0 - math.exp(-math.log(2.0) / half_life_yr)
+    decay_lambda_per_yr = math.log(2.0) / half_life_yr
+    decay_frac_yr1 = 1.0 - math.exp(-decay_lambda_per_yr)
     he3_g_yr1 = tritium_g_per_yr * decay_frac_yr1 * (M_HE3_G_MOL / M_TRITIUM_G_MOL)
     he3_l_stp_yr1 = he3_g_yr1 * LITERS_STP_PER_G_HE3
+    # Exact time-integrated yield in Year 1 under continuous production R_T from zero initial stock:
+    # M_3He(T) = (M_3 / M_T) * R_T * [T - (1 - exp(-lambda * T)) / lambda]
+    he3_g_yr1_cont_zero = (
+        tritium_g_per_yr
+        * (1.0 - decay_frac_yr1 / decay_lambda_per_yr)
+        * (M_HE3_G_MOL / M_TRITIUM_G_MOL)
+    )
     he3_g_steady = tritium_g_per_yr * (M_HE3_G_MOL / M_TRITIUM_G_MOL)
 
     return {
@@ -138,6 +146,8 @@ def audit_reactor_tritium_decay() -> dict[str, Any]:
         "tritium_g_per_yr": round(tritium_g_per_yr, 1),
         "decay_fraction_yr1": round(decay_frac_yr1, 5),
         "he3_yr1_g": round(he3_g_yr1, 1),
+        "he3_yr1_from_batch_g": round(he3_g_yr1, 1),
+        "he3_yr1_continuous_from_zero_g": round(he3_g_yr1_cont_zero, 2),
         "he3_yr1_L_stp": round(he3_l_stp_yr1, 1),
         "he3_steady_state_g_per_yr": round(he3_g_steady, 1),
     }
@@ -221,6 +231,9 @@ def audit_hybrid_cryo_cascade() -> dict[str, Any]:
             "direct_1_8K_usd_per_g": round(direct_usd_g, 2),
             "hybrid_kwh_per_g": round(hybrid_kwh_g, 1),
             "hybrid_usd_per_g": round(hybrid_usd_g, 2),
+            "recovery_85pct_he3_g_per_yr": round(0.85 * g_yr, 2),
+            "recovery_85pct_hybrid_kwh_per_g": round(hybrid_kwh_g / 0.85, 1),
+            "recovery_85pct_hybrid_usd_per_g": round(hybrid_usd_g / 0.85, 2),
             "margin_over_elec_ratio": round(MARKET_PRICE_USD_PER_G / hybrid_usd_g, 1),
         })
 
@@ -228,7 +241,10 @@ def audit_hybrid_cryo_cascade() -> dict[str, Any]:
         "plant_lhe_L_per_day": lhe_liters_per_day,
         "gas_throughput_L_stp_per_yr": round(v_gas_stp_per_yr, 1),
         "mass_flow_g_per_s": round(m_dot_he_g_s, 4),
+        "stage_cut_theta": split_frac,
         "pre_concentration_factor": pre_conc_factor,
+        "implied_stage1_recovery_ideal": split_frac * pre_conc_factor,
+        "realistic_recovery_benchmark": 0.85,
         "direct_1_8K_cold_W": round(q_direct_1_8k_w, 2),
         "direct_1_8K_elec_kW": round(p_direct_kw, 2),
         "direct_1_8K_kwh_per_yr": round(e_direct_kwh_yr, 1),
