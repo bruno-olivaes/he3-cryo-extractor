@@ -1,5 +1,6 @@
 # Terrestrial Helium-3 Exergy & Hybrid Cryogenic Extractor Audit (Paper 9)
 
+[![Zenodo DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24485292.svg)](https://doi.org/10.5281/zenodo.24485292)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![ORCID](https://img.shields.io/badge/ORCID-0009--0003--5351--446X-green.svg)](https://orcid.org/0009-0003-5351-446X)
 [![Portfolio](https://img.shields.io/badge/Portfolio-The%20Matrioska%20Protocol-blueviolet)](https://bruno-olivaes.github.io)
